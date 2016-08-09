@@ -1,7 +1,8 @@
 package com.yodlee.dashboard.integration.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+
+import com.yodlee.dashboard.model.pk.KeywordPK;
 
 
 /**
@@ -10,14 +11,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="keywords")
+@IdClass(KeywordPK.class)
 @NamedQuery(name="Keyword.findAll", query="SELECT k FROM Keyword k")
-public class Keyword implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Keyword  {
 	@Id
 	@Column(name="bug_id", nullable=false)
 	private int bugId;
 
 	//bi-directional many-to-one association to Keyworddef
+	@Id
 	@ManyToOne
 	@JoinColumn(name="keywordid", nullable=false)
 	private Keyworddef keyworddef;
