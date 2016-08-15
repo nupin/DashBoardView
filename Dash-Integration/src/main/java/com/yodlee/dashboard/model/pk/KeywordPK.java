@@ -2,6 +2,9 @@ package com.yodlee.dashboard.model.pk;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 import com.yodlee.dashboard.integration.model.Keyworddef;
 
 public class KeywordPK implements Serializable {
@@ -9,7 +12,8 @@ public class KeywordPK implements Serializable {
 
 	private int bugId;
 
-	private Keyworddef keyworddef;
+	private short keywordid;
+	
 
 	public int getBugId() {
 		return bugId;
@@ -19,12 +23,13 @@ public class KeywordPK implements Serializable {
 		this.bugId = bugId;
 	}
 
-	public Keyworddef getKeyworddef() {
-		return keyworddef;
+
+	public short getKeywordid() {
+		return keywordid;
 	}
 
-	public void setKeyworddef(Keyworddef keyworddef) {
-		this.keyworddef = keyworddef;
+	public void setKeywordid(short keywordid) {
+		this.keywordid = keywordid;
 	}
 
 	@Override
@@ -32,8 +37,7 @@ public class KeywordPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + bugId;
-		result = prime * result
-				+ ((keyworddef == null) ? 0 : keyworddef.hashCode());
+		result = prime * result + keywordid;
 		return result;
 	}
 
@@ -48,10 +52,7 @@ public class KeywordPK implements Serializable {
 		KeywordPK other = (KeywordPK) obj;
 		if (bugId != other.bugId)
 			return false;
-		if (keyworddef == null) {
-			if (other.keyworddef != null)
-				return false;
-		} else if (!keyworddef.equals(other.keyworddef))
+		if (keywordid != other.keywordid)
 			return false;
 		return true;
 	}
