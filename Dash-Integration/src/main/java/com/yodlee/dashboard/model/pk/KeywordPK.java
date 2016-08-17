@@ -2,11 +2,6 @@ package com.yodlee.dashboard.model.pk;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
-import com.yodlee.dashboard.integration.model.Keyworddef;
-
 public class KeywordPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 

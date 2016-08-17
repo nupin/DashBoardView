@@ -1,7 +1,9 @@
 package com.yodlee.dashboard.integration.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -17,8 +19,8 @@ public class Keyworddef implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private short id;
+	@Column(name="id", unique=true, nullable=false)
+	private short keyworddefsId;
 
 	@Lob
 	@Column(nullable=false)
@@ -47,12 +49,12 @@ public class Keyworddef implements Serializable {
 	public Keyworddef() {
 	}
 
-	public short getId() {
-		return this.id;
+	public short getkeyworddefsId() {
+		return this.keyworddefsId;
 	}
 
-	public void setId(short id) {
-		this.id = id;
+	public void setkeyworddefsId(short keyworddefsId) {
+		this.keyworddefsId = keyworddefsId;
 	}
 
 	public String getDescription() {

@@ -20,12 +20,12 @@ public class Keyword  {
 	private int bugId;
 
 	@Id
-	@Column(name="keywordid", nullable=false)
+	@Column(name="keywordid", nullable=false, insertable = false, updatable = false)
 	private short keywordid;
 	
 	//bi-directional many-to-one association to Keyworddef
 	@ManyToOne
-	@JoinColumn(name="keywordid", nullable=false)
+	@JoinColumn(name="keywordid", nullable=false )
 	private Keyworddef keyworddef;
 
 	public Keyword() {

@@ -74,13 +74,13 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>testmvc</warName>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<warName>dashboard</warName>
+						<failOnMissingWebXml>dashboard</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>testmvc</finalName>
+		<finalName>dashboard</finalName>
 	</build>
 
 </project>

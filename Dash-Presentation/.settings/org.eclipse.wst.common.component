@@ -11,6 +11,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/Dash-Presentation/target/classes"/>
-        <property name="context-root" value="testmvc"/>
+        <property name="context-root" value="dashboard"/>
     </wb-module>
 </project-modules>
