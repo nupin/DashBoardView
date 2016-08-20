@@ -36,10 +36,10 @@ public class BugDaoImpl extends AbstractDao<Integer,Bug> implements BugsDao {
 	@SuppressWarnings("unchecked")
 	public List<Bug> getAllClosedBugs(String customer , Date fromDate , Date toDate ){
 	
-		List<Bug> bugList = getEntityManager().createQuery("select b.bug_id , p.login_name  , p.realname ,b.cf_customer , b.cf_workflow_status , "
-				+ "b.cf_bugtype ,ba.who , b.cf_agents ,cf_bug_complexity1,estimated_time, ba.bug_when from bugs b, bugs_activity ba, profiles p "
-				+ "where ba.who=p.userid and b.bug_id=ba.bug_id and ba.added='CS' and ba.removed='IAE' and ba.bug_when>= :fromDate and ba.bug_when<= :toDate "
-				+ "and b.cf_bugtype='Bug' order by b.cf_customer" ).setParameter("fromDate", fromDate).setParameter("toDate", toDate).getResultList();	
+		List<Bug> bugList = getEntityManager().createQuery("select b.bugId , p.loginName  , p.realname ,b.cfCustomer , b.cfWorkflowStatus , "
+				+ "b.cfBugtype , p.userid , b.cfAgents , b.cfBugComplexity1 , b.estimatedTime, ba.bugWhen from Bug b, BugsActivity ba, Profile p "
+				+ "where b.bugId=ba.bug.bugId and ba.profile.userid=p.userid and ba.added='CS' and ba.removed='IAE' and ba.bugWhen>= :fromDate and ba.bugWhen<= :toDate "
+				+ "and b.cfBugtype='Bug' order by b.cfCustomer" ).setParameter("fromDate", fromDate).setParameter("toDate", toDate).getResultList();	
 	
 		
 		return bugList ;

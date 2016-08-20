@@ -1,7 +1,9 @@
 package com.yodlee.dashboard.integration.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -38,6 +40,28 @@ public class BugsActivity implements Serializable {
 
 	@Column(length=255)
 	private String removed;
+
+//	@Column(name="who", nullable=false , insertable = false, updatable = false)
+//	private int who;
+//	
+//	@Column(name="bug_id", nullable=false , insertable = false, updatable = false)
+//	private int bugId;
+	
+//	public int getWho() {
+//		return who;
+//	}
+//
+//	public void setWho(int who) {
+//		this.who = who;
+//	}
+//
+//	public int getBugId() {
+//		return bugId;
+//	}
+//
+//	public void setBugId(int bugId) {
+//		this.bugId = bugId;
+//	}
 
 	//bi-directional many-to-one association to Bug
 	@ManyToOne
