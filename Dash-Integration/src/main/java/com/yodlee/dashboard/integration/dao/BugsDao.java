@@ -13,4 +13,5 @@ public interface BugsDao {
 	
 	public List<Bug> getAllClosedBugs(String customer , Date fromDate , Date toDate );
 	
+	public List<Bug> getAllNewBugs(String customer , Date fromDate , Date toDate);
 }

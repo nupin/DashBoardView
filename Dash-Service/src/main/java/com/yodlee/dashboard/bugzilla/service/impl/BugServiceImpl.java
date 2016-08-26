@@ -24,5 +24,8 @@ public class BugServiceImpl implements BugService {
 		return bugDao.getAllClosedBugs(customer, fromDate, toDate);
 	}
 
-	
+	public List<Bug> getAllNewBugs(String customer , Date fromDate , Date toDate) {
+		
+		return bugDao.getAllNewBugs(customer, fromDate, toDate);
+	}
 }

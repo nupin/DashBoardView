@@ -1,0 +1,38 @@
+select distinct b.bug_id,b.creation_ts,b.delta_ts,cf_agents, cf_suminfo,b.status_whiteboard,k.name as keywords,b.deadline,b.cf_department,
+cf_customer,cf_workflow_status,b.cf_idle_time
+,cf_customer 
+from bugs b, keywords ki, keyworddefs k
+where b.cf_bugtype='Bug'
+and  b.cf_backend_frontend not in ('Preventive Fixes')
+and b.cf_backend_frontend in ('Customer', 'VIP', 'Forum')
+and b.bug_id = ki.bug_id
+and ki.keywordid =k.id
+and b.creation_ts <='2016-04-12 19:30:00' and b.creation_ts >='2016-04-11 19:30:00'
+and b.component_id in (1599,1697,1881,1931,1963,2187,2427,3215,3217,3439)
+union
+select distinct b.bug_id,b.creation_ts,b.delta_ts,cf_agents, cf_suminfo,b.status_whiteboard,null,b.deadline,b.cf_department,
+cf_customer,cf_workflow_status,b.cf_idle_time
+,cf_customer
+from bugs b, keywords ki, keyworddefs k 
+where b.cf_bugtype='Bug' 
+and  b.cf_backend_frontend not in ('Preventive Fixes')
+and b.cf_backend_frontend in ('Customer', 'VIP', 'Forum')
+and b.bug_id not in (select bug_id from keywords)
+and ki.keywordid =k.id
+and b.creation_ts <='2016-04-12' and b.creation_ts >='2016-04-11'
+and b.component_id in (1599,1697,1881,1931,1963,2187,2427,3215,3217,3439);                                                                                  
+ 
+
+select  b.bug_id,b.creation_ts,b.delta_ts,cf_agents, cf_suminfo,b.status_whiteboard,null,b.deadline,b.cf_department,
+cf_customer,cf_workflow_status,b.cf_idle_time ,cf_customer from bugs b left join keywords ki on b.bug_id = ki.bug_id left join keyworddefs k on ki.keywordid =k.id 
+where b.cf_bugtype='Bug' and  b.cf_backend_frontend not in ('Preventive Fixes') and b.cf_backend_frontend in ('Customer', 'VIP', 'Forum')
+and b.creation_ts >='2016-04-11' and b.creation_ts <='2016-04-12' and b.component_id in (1599,1697,1881,1931,1963,2187,2427,3215,3217,3439)
+
+
+select distinct b.bug_id,b.creation_ts,b.delta_ts,cf_agents, cf_suminfo,b.status_whiteboard,b.deadline,b.cf_department,
+cf_customer,cf_workflow_status,b.cf_idle_time,cf_customer from bugs b , keywords ki , keyworddefs k where b.bug_id = ki.bug_id 
+and ki.keywordid =k.id and b.cf_bugtype='Bug' and  b.cf_backend_frontend not in ('Preventive Fixes') and b.cf_backend_frontend in ('Customer', 'VIP', 'Forum')
+and b.creation_ts <='2016-04-12' and b.creation_ts >='2016-04-11'
+and b.component_id in (1599,1697,1881,1931,1963,2187,2427,3215,3217,3439)
+
+

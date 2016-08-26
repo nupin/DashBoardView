@@ -45,6 +45,19 @@ public class BugDaoImpl extends AbstractDao<Integer,Bug> implements BugsDao {
 		return bugList ;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Bug> getAllNewBugs(String customer , Date fromDate , Date toDate){
+		List<Bug> bugList = getEntityManager().createQuery("select distinct b.bugId , b.creationTs , b.deltaTs , b.cfAgents , b.cfSuminfo , b.statusWhiteboard , k.name as keywords,"
+				+ "b.deadline , b.cfDepartment , b.cfCustomer , b.cfWorkflowStatus , b.cfIdleTime , b.cfCustomer from Bug b , Keyword ki, Keyworddef k where "
+				+ "b.bugId = ki.bugId and ki.keywordid = k.id and b.cfBugtype='Bug' and b.cfBackendFrontend not in ('Preventive Fixes') and "
+				+ "b.cfBackendFrontend in ('Customer', 'VIP', 'Forum') and b.creationTs >=:fromDate and b.creationTs <=:toDate and b.componentId in "
+				+ "(1599,1697,1881,1931,1963,2187,2427,3215,3217,3439)").setParameter("fromDate", fromDate).setParameter("toDate", toDate).getResultList();
+		
+		System.out.println("--------->"+bugList.size());
+		
+		return bugList ;
+	}
+	
 //	public void getReopenedBugs(String customer , Date fromDate , Date toDate){
 //		
 //	}

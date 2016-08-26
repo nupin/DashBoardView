@@ -8,4 +8,6 @@ import com.yodlee.dashboard.integration.model.Bug;
 public interface BugService {
 
 	List<Bug> getAllClosedBugs(String customer , Date fromDate , Date toDate);
+	
+	List<Bug> getAllNewBugs(String customer , Date fromDate , Date toDate);
 }
